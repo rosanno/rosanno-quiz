@@ -38,11 +38,11 @@
 }
 
 .choices-list .choices-item:hover {
-    border: 1px solid #3a5a96;
+  border: 1px solid #3a5a96;
 }
 
 .custom-btn {
-    width: max-content;
+  width: max-content;
 }
 
 .wrong,
@@ -55,7 +55,13 @@
   border: 1px solid rgb(34, 151, 96);
 }
 
+.score-card {
+  background-color: #fff;
+  border-radius: 5px;
+  width: 260px;
+  padding: 20px;
+}
 
-.wrong {
-  background-color: rgba(224, 85, 85, 0.6);
+.score-text {
+    font-size: 10rem;
 }

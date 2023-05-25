@@ -20,7 +20,11 @@ const quizApi = async () => {
 
 const render = () => {
   if (questionIndex >= data.length) {
-    window.location.reload();
+    document.querySelector(".custom-card-container").classList.add("d-none");
+    document.querySelector(".score-card").classList.remove("d-none");
+    document.querySelector(".score-card").classList.add("d-block");
+    document.getElementById("score").innerText = score;
+    return;
   }
 
   question.innerText = data[questionIndex].question;
@@ -88,6 +92,10 @@ const startQuiz = () => {
 
   quizApi();
 };
+
+document.getElementById("play-again").addEventListener("click", () => {
+  window.location.reload();
+});
 
 nextBtn.addEventListener("click", render);
 
