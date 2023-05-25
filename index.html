@@ -14,31 +14,44 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
-    <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+    <div
+      class="container-fluid d-flex flex-column justify-content-center align-items-center"
+    >
       <div class="custom-card-container">
         <div class="form-container d-flex align-items-center gap-3">
-          <input type="text" id="username" class="custom-input" placeholder="Enter username..." autocomplete="off" />
+          <select class="custom-input" id="categories">
+            <option selected disabled>Select Category</option>
+            <option value="Linux">Linux</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Docker">Docker</option>
+          </select>
           <button class="btn btn-primary" id="start-btn">Take quiz</button>
         </div>
         <div class="custom-card d-none">
-            <div class="custom-card-header">
-                <p class="text-muted" id="questions-count"></p>
-                <hr>
-            </div>
-            <div class="custom-card-body d-flex flex-column">
-               <p class="h5" id="question"></p>
-               <ul class="choices-list" id="options">
-               </ul>
-               <button class="btn btn-primary align-self-end custom-btn" id="next-btn">Next</button>
-            </div>
+          <div class="custom-card-header">
+            <p class="text-muted" id="questions-count"></p>
+            <hr />
+          </div>
+          <div class="loader d-none"></div>
+          <div class="custom-card-body d-flex flex-column">
+            <p class="h5" id="question"></p>
+            <ul class="choices-list" id="options"></ul>
+            <button
+              class="btn btn-primary align-self-end custom-btn"
+              id="next-btn"
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
       <div class="score-card d-none">
-        <div class="score-card-body d-flex flex-column align-items-center justify-content-center">
-           <p class="h3">Your score</p>
-           <h1 class="score-text" id="score"></h1>
-           <button class="btn btn-danger" id="play-again">Play again</button>
+        <div
+          class="score-card-body d-flex flex-column align-items-center justify-content-center"
+        >
+          <p class="h3">Your score</p>
+          <h1 class="score-text" id="score"></h1>
+          <button class="btn btn-danger" id="play-again">Play again</button>
         </div>
       </div>
     </div>

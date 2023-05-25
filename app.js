@@ -3,6 +3,7 @@ const startBtn = document.getElementById("start-btn");
 const nextBtn = document.getElementById("next-btn");
 const question = document.getElementById("question");
 const choicesList = document.getElementById("options");
+const categories = document.getElementById("categories");
 
 const apiKey = "NPTbn2dPH2SevJi7pNJ6zgiFLkSfCP8cLDqERaDA";
 const baseURL = "https://quizapi.io/api/v1/questions";
@@ -11,12 +12,34 @@ let data;
 var questionIndex = 0;
 var answer;
 var score = 0;
+var categoryValue = "";
+let isLoading = true;
+
+const loading = (prop1, prop2) => {
+  console.log("loading...");
+  document.querySelector(".loader").classList.remove(prop1);
+  document.querySelector(".loader").classList.add(prop2);
+};
 
 const quizApi = async () => {
-  const res = await fetch(`${baseURL}?apiKey=${apiKey}&limit=10`);
+  isLoading && loading("d-none", "d-block");
+  const res = await fetch(
+    `${baseURL}?apiKey=${apiKey}&limit=10&category=${categoryValue}`
+  );
   data = await res.json();
+  isLoading = false;
+
+  !isLoading && loading("d-block", "d-none");
+
   render();
 };
+
+const getCategory = () => {
+  let selectedCategory = categories.options[categories.selectedIndex];
+  categoryValue = selectedCategory.value;
+};
+
+categories.addEventListener("change", getCategory);
 
 const render = () => {
   if (questionIndex >= data.length) {
