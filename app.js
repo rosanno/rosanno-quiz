@@ -22,6 +22,10 @@ const loading = (prop1, prop2) => {
 };
 
 const quizApi = async () => {
+  /**
+   * check if loading is true
+   * if true call loading function
+   */
   isLoading && loading("d-none", "d-block");
   const res = await fetch(
     `${baseURL}?apiKey=${apiKey}&limit=10&category=${categoryValue}`
@@ -86,6 +90,10 @@ const render = () => {
     });
   });
 
+  /**
+   * check if the answer variable have a value
+   * if answer is undefined don't call checkAnswer function
+   */
   answer !== undefined && checkAnswer(answer, correctAnswer);
   questionIndex++;
 };
