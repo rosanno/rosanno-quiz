@@ -17,8 +17,7 @@ let isLoading = true;
 
 const loading = (prop1, prop2) => {
   console.log("loading...");
-  document.querySelector(".loader").classList.remove(prop1);
-  document.querySelector(".loader").classList.add(prop2);
+  document.querySelector(".loader").classList.replace(prop1, prop2);
 };
 
 const quizApi = async () => {
@@ -83,10 +82,12 @@ const render = () => {
       answer = this.id;
 
       choiceItems.forEach((item) => {
-        item.classList.remove("selected");
+        item.classList.remove("bg-success");
+        item.classList.remove("text-white");
       });
 
-      item.classList.add("selected");
+      item.classList.add("bg-success");
+      item.classList.add("text-white");
     });
   });
 
