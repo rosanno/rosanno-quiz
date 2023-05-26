@@ -27,7 +27,7 @@ const quizApi = async () => {
    */
   isLoading && loading("d-none", "d-block");
   const res = await fetch(
-    `${baseURL}?apiKey=${apiKey}&limit=10&category=${categoryValue}`
+    `${baseURL}?apiKey=${apiKey}&limit=20&category=${categoryValue}`
   );
   data = await res.json();
   isLoading = false;
@@ -44,12 +44,21 @@ const getCategory = () => {
 
 categories.addEventListener("change", getCategory);
 
+const scoreCard = () => {
+  document.querySelector(".custom-card-container").classList.add("d-none");
+  document.querySelector(".score-card").classList.replace("d-none", "d-block");
+  document.getElementById("score").innerText = score;
+
+  if (score >= 10) {
+    document.getElementById("score-label").innerText = "Pass";
+  } else {
+    document.getElementById("score-label").innerText = "Failed";
+  }
+};
+
 const render = () => {
   if (questionIndex >= data.length) {
-    document.querySelector(".custom-card-container").classList.add("d-none");
-    document.querySelector(".score-card").classList.remove("d-none");
-    document.querySelector(".score-card").classList.add("d-block");
-    document.getElementById("score").innerText = score;
+    scoreCard();
     return;
   }
 
@@ -61,7 +70,7 @@ const render = () => {
 
   document.getElementById("questions-count").innerText = `${
     questionIndex + 1
-  } of ${data.length} Question`;
+  } of ${data.length} Questions`;
 
   let options = "";
   for (let key in choices) {
